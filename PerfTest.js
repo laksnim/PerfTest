@@ -9,6 +9,7 @@ else {
 }
 
 function releaseCode() {
+    console.log(performance);
     var t = performance.timing,
         pageloadtime = t.loadEventStart - t.navigationStart,
         dns = t.domainLookupEnd - t.domainLookupStart,
