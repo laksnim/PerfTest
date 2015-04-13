@@ -9,41 +9,6 @@ else {
 }
 
 function releaseCode() {
-    var performance = {
-  "onwebkitresourcetimingbufferfull": null,
-  "memory": {
-    "jsHeapSizeLimit": 793000000,
-    "usedJSHeapSize": 11900000,
-    "totalJSHeapSize": 24500000
-  },
-  "timing": {
-    "loadEventEnd": 1428953827476,
-    "loadEventStart": 1428953827472,
-    "domComplete": 1428953827468,
-    "domContentLoadedEventEnd": 1428953827046,
-    "domContentLoadedEventStart": 1428953826999,
-    "domInteractive": 1428953826999,
-    "domLoading": 1428953825640,
-    "responseEnd": 1428953825781,
-    "responseStart": 1428953825625,
-    "requestStart": 1428953825612,
-    "secureConnectionStart": 0,
-    "connectEnd": 1428953825608,
-    "connectStart": 1428953825608,
-    "domainLookupEnd": 1428953825608,
-    "domainLookupStart": 1428953825608,
-    "fetchStart": 1428953825608,
-    "redirectEnd": 0,
-    "redirectStart": 0,
-    "unloadEventEnd": 1428953825632,
-    "unloadEventStart": 1428953825629,
-    "navigationStart": 1428953825608
-  },
-  "navigation": {
-    "redirectCount": 0,
-    "type": 1
-  }
-};
     var t = performance.timing,
         pageloadtime = t.loadEventStart - t.navigationStart,
         dns = t.domainLookupEnd - t.domainLookupStart,
