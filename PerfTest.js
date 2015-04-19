@@ -17,12 +17,13 @@ function releaseCode() {
     console.log(t);
     $("body").append('<div id="perfBox" style="right:0;padding-left:20px;position: fixed;width:600px;margin: 0;top: 0;z-index: 900;background: rgba(255, 255, 255, 0.95);color: #555;font-size: 20px;max-height: 500px;overflow-y:scroll;resize: both"></div>');
     var perfBox = $('#perfBox');
-    var contentTable = "<table id='myContent' style='width:100%'><thead><tr><th>URL</th><th>Duration</th><th>DNS</th><th>TCP</th><th>TTFB</th></tr></thead></table>";
-    perfBox.append('<p>'+'Page Load Time:'+pageloadtime+'</p>');
-    perfBox.append('<p>'+'DNS:'+dns+'</p>');
-    perfBox.append('<p>'+'TCP:'+tcp+'</p>');
-    perfBox.append('<p>'+'TTFB:'+ttfb+'</p>');
-    perfBox.append(contentTable);
+    var contentTable = "<table id='myContent' style='width:100%'><thead><tr><th>URL</th><th>Duration</th><th>DNS</th><th>TCP</th><th>TTFB</th></tr></thead><tbody></tbody></table>";
+    var contentsInTable = $('#myContent tbody')
+    contentsInTable.append('<p>'+'Page Load Time:'+pageloadtime+'</p>');
+    contentsInTable.append('<p>'+'DNS:'+dns+'</p>');
+    contentsInTable.append('<p>'+'TCP:'+tcp+'</p>');
+    contentsInTable.append('<p>'+'TTFB:'+ttfb+'</p>');
+    contentsInTable.append(contentTable);
     contentTable = $('#myContent');
     var contentBody = contentTable.append('<tbody></tbody>');
 //    var tableTr = $('#theRow');
