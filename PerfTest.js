@@ -23,7 +23,7 @@ function releaseCode() {
     contentsInTable.append('<p>'+'DNS:'+dns+'</p>');
     contentsInTable.append('<p>'+'TCP:'+tcp+'</p>');
     contentsInTable.append('<p>'+'TTFB:'+ttfb+'</p>');
-    contentsInTable.append(contentTable);
+    perfBox.append(contentTable);
     contentTable = $('#myContent');
     var contentBody = contentTable.append('<tbody></tbody>');
 //    var tableTr = $('#theRow');
