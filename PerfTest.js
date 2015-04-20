@@ -39,10 +39,3 @@ function releaseCode() {
 
     }
 }
-
-
-//dns = r.domainLookupEnd - r.domainLookupStart;
-//tcp = r.connectEnd - r.connectStart; // includes ssl negotiation
-//waiting = r.responseStart - r.requestStart;
-//content = r.responseEnd - r.responseStart;
-//networkDuration = dns + tcp + waiting + content;
