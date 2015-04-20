@@ -19,7 +19,7 @@ function releaseCode() {
 
     var perfBox = $('#perfBox');
 
-    perfBox.prependTo('<p style="margin-top:20px"><span style="margin-right: 20px">'+'Page Load Time:'+pageloadtime+'</span><span style="margin-right: 20px">'+'DNS:'+dns+'</span><span style="margin-right: 20px">'+'TCP:'+tcp+'</span><span style="margin-right: 20px">'+'TTFB:'+ttfb+'</span></p>');
+    perfBox.prepend('<p style="margin-top:20px"><span style="margin-right: 20px">'+'Page Load Time:'+pageloadtime+'</span><span style="margin-right: 20px">'+'DNS:'+dns+'</span><span style="margin-right: 20px">'+'TCP:'+tcp+'</span><span style="margin-right: 20px">'+'TTFB:'+ttfb+'</span></p>');
 
     // Resource Timing
     var r = performance.getEntriesByType("resource");
