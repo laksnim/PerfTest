@@ -45,7 +45,7 @@ function releaseCode() {
     }
 
     var sortedResources=sortProperties(r);
-
+console.log(sortedResources);
     for(var i=0;i<=r.length;i++){
         var resource= (sortedResources[i])[1];
         var dnsR=resource.domainLookupEnd - resource.domainLookupStart;
