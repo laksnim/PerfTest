@@ -8,8 +8,12 @@ if (performance ) {
   
   var loadtimeBucket ="unknown";
   
-  if ((pageloadtime<1000) && (pageloadtime>100)) {
-   loadtimeBucket="[0.1-1]"
+  if (pageloadtime<1000 && pageloadtime>100) {
+   loadtimeBucket="[0.1-1]";
+   } else if(pageloadtime>=1000 && pageloadtime<2000){
+    loadtimeBucket="[1-2]";
+   }else if(pageloadtime>=2000){
+    loadtimeBucket="[2+]";
    };
   
   console.log(loadtimeBucket);
