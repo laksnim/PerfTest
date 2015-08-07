@@ -50,3 +50,12 @@
     color: #eeeeee;
     padding: 10px;
     font-weight: bold; }
+  #PerfTest .PerfTest-Dashboard .PerfTest-Dashboard-Module {
+    float: left;
+    width: 46%;
+    margin: 10px 2%;
+    padding: 10px;
+    height: 200px;
+    background-color: #eeeeee; }
+  #PerfTest .PerfTest-Dashboard .PerfTest-Module-Main {
+    margin-left: 25%; }

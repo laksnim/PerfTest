@@ -42,13 +42,43 @@
             });
         },
 
+        /**
+         * standard module method which needs to return jquery reference for the Dashboard module
+         * @method getDashboardView
+         * @returns {jQuery}
+         */
+        getDashboardView: function () {
+            var html = [];
+
+            html.push('<div>the meter goes here</div>')
+
+            return $(html.join('\n'));
+        },
+        /**
+         * standard module method which needs to return jquery reference for the panel content
+         * @method getDetailView
+         * @returns {jQuery}
+         */
         getDetailView: function () {
+            var html = [];
             if (!Main.$detail) {
-                Main.$detail = $('<div>details</div>');
+                html.push('<div class="PerfTest-Dashboard">');
+                html.push('  <div class="PerfTest-Dashboard-Module PerfTest-Module-Main"></div>');
+                html.push('  <div class="PerfTest-Dashboard-Module PerfTest-Module-TopOffenders"></div>');
+                html.push('  <div class="PerfTest-Dashboard-Module PerfTest-Module-BadProtocols">Module 3</div>');
+                html.push('</div>');
+                Main.$detail = $(html.join('\n'));
+                Main.$detail.find('.PerfTest-Module-Main').append(PerfTest.Main.getDashboardView());
+                Main.$detail.find('.PerfTest-Module-TopOffenders').append(PerfTest.TopOffenders.getDashboardView());
+//                Main.$detail.find('.PerfTest-Module-BadProtocols').append(PerfTest.BadProtocols.getDashboardView());
             }
             return Main.$detail;
         },
 
+        /**
+         * invoked by bootstrap
+         * @method show
+         */
         show: function () {
             if (!Main.initialized) {
                 Main.initialize();

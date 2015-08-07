@@ -87,4 +87,19 @@ $baseFont: normal 16px/20px $fontArial;
         padding: 10px;
         font-weight: bold;
     }
+
+    // ### begin overview styles ### //
+    .PerfTest-Dashboard {
+        .PerfTest-Dashboard-Module {
+            float: left;
+            width: 46%;
+            margin: 10px 2%;
+            padding: 10px;
+            height: 200px;
+            background-color: $lightGray;
+        }
+        .PerfTest-Module-Main {
+            margin-left: 25%;
+        }
+    }
 }
