@@ -1,0 +1,52 @@
+#PerfTest {
+  display: none;
+  position: fixed;
+  right: 20px;
+  top: 0;
+  width: 850px;
+  height: 500px;
+  max-height: 500px;
+  padding: 0 20px 20px 20px;
+  margin: 0;
+  border: 1px solid #444444;
+  border-top: none;
+  z-index: 99999;
+  background: rgba(255, 255, 255, 0.9);
+  color: #666666;
+  font: normal 16px/20px Arial, sans-serif;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+  #PerfTest *,
+  #PerfTest *:before,
+  #PerfTest *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
+  #PerfTest.show {
+    display: block; }
+  #PerfTest nav ul {
+    margin: 0 -20px;
+    padding: 0;
+    background: #555555; }
+  #PerfTest nav li {
+    cursor: pointer;
+    font-weight: normal;
+    color: #eeeeee;
+    display: inline-block;
+    padding: 10px;
+    border-right: 1px solid white; }
+    #PerfTest nav li:hover {
+      color: white; }
+    #PerfTest nav li.active {
+      background-color: black;
+      color: white;
+      font-weight: bold; }
+  #PerfTest .close {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #eeeeee;
+    padding: 10px;
+    font-weight: bold; }
