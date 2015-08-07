@@ -50,7 +50,7 @@
         getDashboardView: function () {
             var html = [];
 
-            html.push('<div>the meter goes here</div>')
+            html.push('<div>Page load time: ' + PerfTest.Data.getPageLoadTime() + '</div>')
 
             return $(html.join('\n'));
         },
