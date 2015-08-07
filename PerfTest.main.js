@@ -25,7 +25,7 @@
         },
         renderInterface: function () {
             Main.$container = PerfTest.MainView.render();
-            Main.$content = Main.$container.find(".PerfTest-content");
+            Main.$content = Main.$container.find(".PerfTest-Content");
             Main.$nav = Main.$container.find("nav");
 //            var html = PerfTest.TopOffenders.renderOverview();
 
