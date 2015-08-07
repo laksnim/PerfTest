@@ -10,7 +10,7 @@
             state: STATE_NOT_LOADED,
 
             config: {
-                domain: 'rawgit.com',
+                domain: 'rawgit.com/laksnim/PerfTest/master/',
                 // todo: concat all js files into one
                 jsFiles: [
                     'PerfTest.arrayUtils.js',
