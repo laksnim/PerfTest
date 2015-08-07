@@ -10,7 +10,7 @@
             state: STATE_NOT_LOADED,
 
             config: {
-                domain: '127.0.0.1:8887',
+                domain: 'rawgit.com',
                 // todo: concat all js files into one
                 jsFiles: [
                     'PerfTest.arrayUtils.js',
