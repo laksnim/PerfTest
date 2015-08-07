@@ -13,6 +13,7 @@
                 domain: '127.0.0.1:8887',
                 // todo: concat all js files into one
                 jsFiles: [
+                    'PerfTest.arrayUtils.js',
                     'PerfTest.data.js',
                     'PerfTest.main.js',
                     'PerfTest.mainView.js',
@@ -67,21 +68,21 @@
             PerfTest.state = STATE_LOADING;
             // get css loading first to help avoid fouc
             PerfTest.config.cssFiles.forEach(function (fileName) {
-                PerfBootstrap.loadCss('//' + PerfTest.config.domain + '/' + fileName);
+                PerfBootstrap.loadCss('http://' + PerfTest.config.domain + '/' + fileName);
             });
 
             // load libs, if needed
             if (typeof jQuery == 'undefined') {
-                PerfBootstrap.loadJs('//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js');
+                PerfBootstrap.loadJs('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js');
             }
 
             if (typeof d3 == 'undefined') {
-                PerfBootstrap.loadJs('//cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js');
+                PerfBootstrap.loadJs('http://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js');
             }
 
             // load Perf js files
             PerfTest.config.jsFiles.forEach(function (fileName) {
-                PerfBootstrap.loadJs('//' + PerfTest.config.domain + '/' + fileName);
+                PerfBootstrap.loadJs('http://' + PerfTest.config.domain + '/' + fileName);
             });
         }
     };
