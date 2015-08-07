@@ -88,7 +88,7 @@ $baseFont: normal 16px/20px $fontArial;
         font-weight: bold;
     }
 
-    // ### begin overview styles ### //
+    // ### begin Dashboard styles ### //
     .PerfTest-Dashboard {
         .PerfTest-Dashboard-Module {
             float: left;
@@ -101,5 +101,24 @@ $baseFont: normal 16px/20px $fontArial;
         .PerfTest-Module-Main {
             margin-left: 25%;
         }
+        .PerfTest-Module-TopOffenders {
+            li {
+                float: none;
+                clear: both;
+                padding: 5x 0;
+            }
+            .TopOffenders-ratio {
+                font-weight: bold;
+                float: left;
+                width: 40px;
+            }
+            .TopOffenders-url {
+                float: left;
+                max-width: 270px;
+                overflow: hidden;
+            }
+        }
     }
+
+    // ### begin TopOffenders style ### //
 }

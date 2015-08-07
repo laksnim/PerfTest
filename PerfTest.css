@@ -59,3 +59,15 @@
     background-color: #eeeeee; }
   #PerfTest .PerfTest-Dashboard .PerfTest-Module-Main {
     margin-left: 25%; }
+  #PerfTest .PerfTest-Dashboard .PerfTest-Module-TopOffenders li {
+    float: none;
+    clear: both;
+    padding: 5x 0; }
+  #PerfTest .PerfTest-Dashboard .PerfTest-Module-TopOffenders .TopOffenders-ratio {
+    font-weight: bold;
+    float: left;
+    width: 40px; }
+  #PerfTest .PerfTest-Dashboard .PerfTest-Module-TopOffenders .TopOffenders-url {
+    float: left;
+    max-width: 270px;
+    overflow: hidden; }
