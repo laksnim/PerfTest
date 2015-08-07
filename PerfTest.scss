@@ -27,7 +27,7 @@ $baseFont: normal 16px/20px $fontArial;
     margin: 0;
     border: 1px solid $borderColor;
     border-top: none;
-    z-index: 900;
+    z-index: 99999;
     background: transparentize($white, 0.1);
     color: $bodyColor;
     font: $baseFont;
