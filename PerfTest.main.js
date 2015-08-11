@@ -1,5 +1,11 @@
 (function () {
     var Main = {
+        id: "Main",
+        name: "Overview",
+        index: 0,
+        $detailPanel: null,
+
+
         initialized: false,
 
         // references created during init
@@ -7,30 +13,38 @@
         $nav: null,
         $content: null,
 
-        // reference created when renderOverview is called
-        $detail: null,
-
-        // store reference to last content panel for easy removal
-        $activeDetail: null,
-
-        // sub views?
-        $overview1: null,
-        $overview2: null,
-        $overview3: null,
-
         initialize: function () {
             Main.renderInterface();
             Main.appendHandlers();
             Main.initialized = true;
         },
         renderInterface: function () {
-            Main.$container = PerfTest.MainView.render();
+            var $container;
+            var html = [];
+            var i;
+            var modules = PerfTest.modules;
+
+            html.push('<div id="PerfTest">');
+            html.push('  <nav>');
+            html.push('    <ul>');
+            for (i = 0; i < modules.length; i += 1) {
+                html.push('       <li class="active" data-module-id="' + modules[i].id + '">' + modules[i].name + '</li>');
+            }
+            html.push('    </ul>');
+            html.push('    <span class="close">&#x274c;</span>');
+            html.push('  </nav>');
+            html.push('  <div class="PerfTest-Content">');
+            for (i = 0; i < modules.length; i += 1) {
+                html.push('    <div class="PerfTest-Content-Module PerfTest-Content-' + modules[i].id + '"></div>');
+            }
+            html.push('  </div>');
+            html.push('</div>');
+
+            $container = $(html.join("\n")).appendTo("body");
+
+            Main.$container = $container;
             Main.$content = Main.$container.find(".PerfTest-Content");
             Main.$nav = Main.$container.find("nav");
-//            var html = PerfTest.TopOffenders.renderOverview();
-
-//            $("body").append("<div id='perfBox' style='right:0;padding-left:20px;position: fixed;width:850px;margin: 0;top: 0;z-index: 900;background: rgba(255, 255, 255, 0.95);color: #555;font-size: 20px;max-height: 500px;overflow-y:scroll;resize: both'><table id='myContent' style='width:100%'><thead><tr><th style='padding: 15px;padding-bottom:10px;width: 500px;word-wrap: break-word;'>Ratio (%)</th><th style='padding: 15px;text-align:center;padding-bottom:10px;width: 500px;word-wrap: break-word;'>URL</th><th style='text-align: center;padding: 15px;padding-bottom:10px;'>Duration (ms)</th><th style='text-align: center;padding: 15px;padding-bottom:10px;'>DNS (ms)</th><th style='text-align: center;padding: 15px;padding-bottom:10px;'>TCP (ms)</th><th style='text-align: center;padding: 15px;padding-bottom:10px;'>Waiting (ms)</th><th style='text-align: center;padding: 15px;padding-bottom:10px;'>Content (ms)</th><th style='text-align: center;padding: 15px;padding-bottom:10px;'>Network Duration (ms)</th></tr></thead><tbody id='contentBody'></tbody></table></div>");
-
         },
         appendHandlers: function () {
             Main.$nav.on("click", "li", function () {
@@ -43,36 +57,37 @@
         },
 
         /**
-         * standard module method which needs to return jquery reference for the Dashboard module
-         * @method getDashboardView
-         * @returns {jQuery}
-         */
-        getDashboardView: function () {
-            var html = [];
-
-            html.push('<div>Page load time: ' + PerfTest.Data.getPageLoadTime() + '</div>')
-
-            return $(html.join('\n'));
-        },
-        /**
          * standard module method which needs to return jquery reference for the panel content
-         * @method getDetailView
+         * @method createDetailView
          * @returns {jQuery}
          */
-        getDetailView: function () {
+        createDetailView: function (params) {
             var html = [];
-            if (!Main.$detail) {
-                html.push('<div class="PerfTest-Dashboard">');
-                html.push('  <div class="PerfTest-Dashboard-Module PerfTest-Module-Main"></div>');
-                html.push('  <div class="PerfTest-Dashboard-Module PerfTest-Module-TopOffenders"></div>');
-                html.push('  <div class="PerfTest-Dashboard-Module PerfTest-Module-BadProtocols">Module 3</div>');
-                html.push('</div>');
-                Main.$detail = $(html.join('\n'));
-                Main.$detail.find('.PerfTest-Module-Main').append(PerfTest.Main.getDashboardView());
-                Main.$detail.find('.PerfTest-Module-TopOffenders').append(PerfTest.TopOffenders.getDashboardView());
-//                Main.$detail.find('.PerfTest-Module-BadProtocols').append(PerfTest.BadProtocols.getDashboardView());
+            var i;
+            var $dashboard;
+            var module;
+
+            html.push('<div class="PerfTest-Dashboard">');
+            for (i = 0; i < PerfTest.modules.length; i += 1) {
+                module = PerfTest.modules[i];
+                if (module.createDashboardView) {
+                    html.push('  <div class="PerfTest-Dashboard-Module PerfTest-Module-' + PerfTest.modules[i].id + '"></div>');
+                }
             }
-            return Main.$detail;
+            html.push('</div>');
+
+            $dashboard = $(html.join('\n')).appendTo(params.element);
+
+            for (i = 0; i < PerfTest.modules.length; i += 1) {
+                module = PerfTest.modules[i];
+                if (module.createDashboardView) {
+                    PerfTest.modules[i].createDashboardView({
+                        width: null,
+                        height: null,
+                        element: $dashboard.find('.PerfTest-Module-' + PerfTest.modules[i].id)[0]
+                    });
+                }
+            }
         },
 
         /**
@@ -91,12 +106,20 @@
         },
 
         showDetail: function (moduleId) {
-            var $newDetail = PerfTest[moduleId].getDetailView();
-            if (Main.$activeDetail) {
-                Main.$activeDetail.detach();
+            var module = PerfTest[moduleId];
+            var $panelContainer = this.$content.find(".PerfTest-Content-" + moduleId);
+            if (!module.$detailPanel) {
+                module.$detailPanel = $panelContainer;
+                PerfTest[moduleId].createDetailView({
+                    width: 0,
+                    height: 0,
+                    element: $panelContainer[0]
+                });
             }
-            Main.$content.append($newDetail);
-            Main.$activeDetail = $newDetail;
+
+            // add/remove class
+            this.$content.find(".PerfTest-Content-Module.active").removeClass("active");
+            $panelContainer.addClass("active");
         }
     };
 

@@ -88,6 +88,14 @@ $baseFont: normal 16px/20px $fontArial;
         font-weight: bold;
     }
 
+    .PerfTest-Content-Module {
+        display: none;
+
+        &.active {
+            display: block;
+        }
+    }
+
     // ### begin Dashboard styles ### //
     .PerfTest-Dashboard {
         .PerfTest-Dashboard-Module {
@@ -98,7 +106,7 @@ $baseFont: normal 16px/20px $fontArial;
             height: 200px;
             background-color: $lightGray;
         }
-        .PerfTest-Module-Main {
+        .PerfTest-Module-PageSummary {
             margin-left: 25%;
         }
         .PerfTest-Module-TopOffenders {
@@ -120,5 +128,6 @@ $baseFont: normal 16px/20px $fontArial;
         }
     }
 
+    // ### begin PageSummary style ### //
     // ### begin TopOffenders style ### //
 }

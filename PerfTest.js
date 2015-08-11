@@ -1,5 +1,3 @@
-
-
 (function () {
     var STATE_NOT_LOADED = 'not_loaded';
     var STATE_LOADING = 'loading';
@@ -8,17 +6,25 @@
     if (typeof PerfTest == "undefined") {
         PerfTest = {
             state: STATE_NOT_LOADED,
+            modules: [],
 
             config: {
                 domain: '127.0.0.1:8887',
                 // todo: concat all js files into one
                 jsFiles: [
+                    // utils
                     'PerfTest.arrayUtils.js',
+
+                    // data provider
                     'PerfTest.data.js',
+
+                    // main file
                     'PerfTest.main.js',
-                    'PerfTest.mainView.js',
+
+                    // modules
+                    'PerfTest.pageSummary.js',
                     'PerfTest.topOffenders.js',
-                    'PerfTest.topOffendersView.js'
+                    'PerfTest.badProtocols.js'
                 ],
                 cssFiles: ['PerfTest.css']
             }
@@ -29,14 +35,16 @@
 
     var PerfBootstrap = {
         initialize: function () {
-            if (PerfTest.state == STATE_NOT_LOADED) {
-                // start loading everything
-                PerfBootstrap.loadAllFiles();
-            } else if (PerfTest.state == STATE_LOADED) {
-                // already loaded, show stuff
-                PerfBootstrap.start();
+            var module;
+            for (module in PerfTest) {
+                // if looks like a module, add to array
+                if (PerfTest.hasOwnProperty(module)) {
+                    // todo: this check could be more robust (presence of id is rather weak duck type check)
+                    if (PerfTest[module].id) {
+                        PerfTest.modules[PerfTest[module].index] = PerfTest[module];
+                    }
+                }
             }
-            // if loading, do nothing
         },
         /**
          * start is called after all js is loaded
@@ -59,6 +67,7 @@
             script.onload = function () {
                 if (--fileCount === 0) {
                     PerfTest.state = STATE_LOADED;
+                    PerfBootstrap.initialize();
                     PerfBootstrap.start();
                 }
             };
@@ -87,7 +96,16 @@
         }
     };
 
-    PerfBootstrap.initialize();
+    // this file may called several times on a page, check state to figure out what should be called
+    if (PerfTest.state == STATE_NOT_LOADED) {
+        // begin loading required css/js
+        PerfBootstrap.loadAllFiles();
+    } else if (PerfTest.state == STATE_LOADED) {
+        // already loaded, show stuff
+        PerfBootstrap.start();
+    }
+    // if in the middle of loading, do nothing
+
 }());
 
 

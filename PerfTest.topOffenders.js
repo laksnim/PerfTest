@@ -4,21 +4,23 @@
     var Data = PerfTest.Data;
 
     PerfTest.TopOffenders = {
-        $detail: null,
+        id: "TopOffenders",
+        name: "Top Offenders",
+        index: 2,
+        $detailPanel: null,
 
-        getDetailView: function (params) {
-            if (!this.$detail) {
-                this.$detail = $(PerfTest.TopOffendersView.getDetailHtml());
-            }
 
-            return this.$detail;
+        createDetailView: function (params) {
+            $('<div>Top offenders detail view</div>').appendTo(params.element);
         },
-        getDashboardView: function (params) {
+
+        createDashboardView: function (params) {
             var html = [];
             var totalLoadTime = PerfTest.Data.getPageLoadTime();
             var topOffenders = PerfTest.Data.getSlowResources();
             var maxItems = Math.min(topOffenders.length, 5);
             var i;
+
             console.log("slow stuff", topOffenders)
             html.push('<div>');
             html.push('  <div>Very slow items: ' + topOffenders.length + '</div>');
@@ -30,15 +32,9 @@
                 html.push('    </li>');
             }
             html.push('  <ul>');
-
             html.push('</div>');
-            //            params = {
-            //                width: 0,
-            //                height: 0
-            //            }
 
-//            var Data.getLongestResources(25);
-            return $(html.join('\n'));
+            $(html.join('\n')).appendTo(params.element);
         }
     };
 

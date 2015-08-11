@@ -50,6 +50,10 @@
     color: #eeeeee;
     padding: 10px;
     font-weight: bold; }
+  #PerfTest .PerfTest-Content-Module {
+    display: none; }
+    #PerfTest .PerfTest-Content-Module.active {
+      display: block; }
   #PerfTest .PerfTest-Dashboard .PerfTest-Dashboard-Module {
     float: left;
     width: 46%;
@@ -57,7 +61,7 @@
     padding: 10px;
     height: 200px;
     background-color: #eeeeee; }
-  #PerfTest .PerfTest-Dashboard .PerfTest-Module-Main {
+  #PerfTest .PerfTest-Dashboard .PerfTest-Module-PageSummary {
     margin-left: 25%; }
   #PerfTest .PerfTest-Dashboard .PerfTest-Module-TopOffenders li {
     float: none;
