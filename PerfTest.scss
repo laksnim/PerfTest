@@ -20,7 +20,7 @@ $baseFont: normal 16px/20px $fontArial;
     position: fixed;
     right: 20px;
     top: 0;
-    width: 850px;
+    width: 782px;
     height: 500px;
     max-height: 500px;
     padding: 0 20px 20px 20px;
@@ -65,6 +65,7 @@ $baseFont: normal 16px/20px $fontArial;
             display: inline-block;
             padding: 10px;
             border-right: 1px solid $white;
+            width: auto;
 
             &:hover {
                 color: $white;
@@ -88,17 +89,28 @@ $baseFont: normal 16px/20px $fontArial;
         font-weight: bold;
     }
 
+    .PerfTest-Content-Module {
+        display: none;
+
+        &.active {
+            display: block;
+        }
+    }
+
     // ### begin Dashboard styles ### //
     .PerfTest-Dashboard {
+        h3 {
+            font: bold 16px Arial, sans-serif;
+        }
         .PerfTest-Dashboard-Module {
             float: left;
-            width: 46%;
-            margin: 10px 2%;
+            width: 350px;
+            margin: 10px;
             padding: 10px;
             height: 200px;
             background-color: $lightGray;
         }
-        .PerfTest-Module-Main {
+        .PerfTest-Module-PageSummary {
             margin-left: 25%;
         }
         .PerfTest-Module-TopOffenders {
@@ -120,5 +132,6 @@ $baseFont: normal 16px/20px $fontArial;
         }
     }
 
+    // ### begin PageSummary style ### //
     // ### begin TopOffenders style ### //
 }

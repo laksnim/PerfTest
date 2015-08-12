@@ -3,7 +3,7 @@
   position: fixed;
   right: 20px;
   top: 0;
-  width: 850px;
+  width: 782px;
   height: 500px;
   max-height: 500px;
   padding: 0 20px 20px 20px;
@@ -35,7 +35,8 @@
     color: #eeeeee;
     display: inline-block;
     padding: 10px;
-    border-right: 1px solid white; }
+    border-right: 1px solid white;
+    width: auto; }
     #PerfTest nav li:hover {
       color: white; }
     #PerfTest nav li.active {
@@ -50,14 +51,20 @@
     color: #eeeeee;
     padding: 10px;
     font-weight: bold; }
+  #PerfTest .PerfTest-Content-Module {
+    display: none; }
+    #PerfTest .PerfTest-Content-Module.active {
+      display: block; }
+  #PerfTest .PerfTest-Dashboard h3 {
+    font: bold 16px Arial, sans-serif; }
   #PerfTest .PerfTest-Dashboard .PerfTest-Dashboard-Module {
     float: left;
-    width: 46%;
-    margin: 10px 2%;
+    width: 350px;
+    margin: 10px;
     padding: 10px;
     height: 200px;
     background-color: #eeeeee; }
-  #PerfTest .PerfTest-Dashboard .PerfTest-Module-Main {
+  #PerfTest .PerfTest-Dashboard .PerfTest-Module-PageSummary {
     margin-left: 25%; }
   #PerfTest .PerfTest-Dashboard .PerfTest-Module-TopOffenders li {
     float: none;

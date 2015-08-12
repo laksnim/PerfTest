@@ -49,7 +49,24 @@
             ]);
         },
         getBadProtocolCounts: function () {
+            var thisProtocol = document.location.protocol;
+            var good = 0;
+            var bad = 0;
+            var i = 0;
+            var len = resources.length;
 
+            for (i = 0; i < len; i += 1) {
+                if (resources[i].name.indexOf(thisProtocol) === 0) {
+                    good++;
+                } else {
+                    bad++;
+                }
+            }
+
+            return {
+                good: good,
+                bad: bad
+            }
         }
     };
 }());
