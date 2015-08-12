@@ -13,14 +13,42 @@
             $('<div>bad protocols</div>').appendTo(params.element);
         },
         createDashboardView: function (params) {
-            var html = [];
-            var totalLoadTime = PerfTest.Data.getPageLoadTime();
+            // todo: get width/height from params
+            var height = 125;
+            var width = 200;
+            var counts = PerfTest.Data.getBadProtocolCounts();
 
-            html.push('<div>');
-            html.push('  <div>bad protocols dash view</div>');
-            html.push('</div>');
+            var data = [counts.good, counts.bad];
 
-            $(html.join('\n')).appendTo(params.element);
+            $(params.element).append('<h3>' + counts.bad + ' bad protocols</h3>')
+
+            var color = d3.scale.ordinal()
+                .range(['green','red']);
+
+            var canvas = d3.select(params.element)
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height);
+
+            var group = canvas.append("g")
+                .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+            var arc = d3.svg.arc()
+                .innerRadius(0)
+                .outerRadius(Math.min(width,height)/3);
+
+            var pie = d3.layout.pie()
+                .value(function(d){return d;});
+
+            var arcs = group.selectAll('.arc')
+                .data(pie(data))
+                .enter()
+                .append('g')
+                .attr('class','arc');
+
+            arcs.append('path')
+                .attr('d',arc)
+                .attr('fill',function(d){return color(d.data)});
         }
     };
 

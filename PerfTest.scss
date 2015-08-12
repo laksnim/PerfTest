@@ -65,6 +65,7 @@ $baseFont: normal 16px/20px $fontArial;
             display: inline-block;
             padding: 10px;
             border-right: 1px solid $white;
+            width: auto;
 
             &:hover {
                 color: $white;
