@@ -22,7 +22,7 @@
             $(params.element).append('<h3>' + counts.bad + ' bad protocols</h3>')
 
             var color = d3.scale.ordinal()
-                .range(['green','red']);
+                .range(['#8dca2f','#c50200']);
 
             var canvas = d3.select(params.element)
                 .append("svg")
