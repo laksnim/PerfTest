@@ -13,9 +13,8 @@
             $('<div>bad protocols</div>').appendTo(params.element);
         },
         createDashboardView: function (params) {
-            // todo: get width/height from params
-            var height = 125;
-            var width = 200;
+            var height = params.height * 0.8;
+            var width = params.width;
             var counts = PerfTest.Data.getBadProtocolCounts();
 
             var data = [counts.good, counts.bad];

@@ -66,6 +66,7 @@
             var i;
             var $dashboard;
             var module;
+            var $container;
 
             html.push('<div class="PerfTest-Dashboard">');
             for (i = 0; i < PerfTest.modules.length; i += 1) {
@@ -80,11 +81,13 @@
 
             for (i = 0; i < PerfTest.modules.length; i += 1) {
                 module = PerfTest.modules[i];
+                $container = $dashboard.find('.PerfTest-Module-' + PerfTest.modules[i].id);
                 if (module.createDashboardView) {
+                    console.log("width/height",$container.width(),$container.height())
                     PerfTest.modules[i].createDashboardView({
-                        width: null,
-                        height: null,
-                        element: $dashboard.find('.PerfTest-Module-' + PerfTest.modules[i].id)[0]
+                        width: $container.width(),
+                        height: $container.height(),
+                        element: $container[0]
                     });
                 }
             }
