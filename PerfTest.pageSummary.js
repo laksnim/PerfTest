@@ -36,6 +36,8 @@
             var needleBaseRadius = width/60;
             var arcThickness = width/20;
             var thetaRad = percToRad(percent/2);
+            var cricleRadius = needleBaseRadius * 2;
+            var arcRadius = height-cricleRadius;
             var centerX = 0;
             var centerY = 0;
             var topX = centerX - arcRadius* Math.cos(thetaRad);
@@ -44,7 +46,6 @@
             var leftY = centerY - needleBaseRadius * Math.sin(thetaRad - Math.PI / 2);
             var rightX = centerX - needleBaseRadius* Math.cos(thetaRad + Math.PI / 2);
             var rightY = centerY - needleBaseRadius * Math.sin(thetaRad + Math.PI / 2);
-            var cricleRadius = needleBaseRadius * 2;
             var endAngle = Math.PI * 2/2;
             var colors = d3.scale.ordinal()
                 .range(['#dedede','#8dca2f','#fdc702','#ff7700','#c50200']);
@@ -60,7 +61,8 @@
             var canvas = d3.select(params.element).append("svg")
                 .attr("width", width)
                 .attr("height", height)
-                .attr("style", "background-color:white");
+                .attr("style", "background-color:#eeeeee")
+                .attr('transform','translate(0,'+ -cricleRadius+')');
 
             var arc = d3.svg.arc()
                 .innerRadius(arcRadius - arcThickness)
