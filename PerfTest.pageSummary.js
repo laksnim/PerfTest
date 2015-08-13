@@ -14,7 +14,7 @@
         },
         createDashboardView: function (params) {
             var totalLoadTime = PerfTest.Data.getPageLoadTime() / 1000;
-            var maxLoadTime = 10;
+            var maxLoadTime = 6;
             var percent = Math.min(totalLoadTime/maxLoadTime, 10);
 
 
@@ -82,7 +82,7 @@
                 .attr('transform', 'translate(' + width/2 + ',' + height + ')');
 
             needle.append('path')
-            .attr('d', 'M ' + leftX + ',' + leftY + ', L ' + topX + ',' + topY + ', L ' + rightX + ',' + rightY + '')
+                .attr('d', 'M ' + leftX + ',' + leftY + ', L ' + topX + ',' + topY + ', L ' + rightX + ',' + rightY + '')
                 .style('fill', 'orange')
 
             needle.append('circle')
