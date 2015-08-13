@@ -69,7 +69,7 @@
   #PerfTest .PerfTest-Dashboard .PerfTest-Module-TopOffenders li {
     float: none;
     clear: both;
-    padding: 5x 0; }
+    padding: 5px 0; }
   #PerfTest .PerfTest-Dashboard .PerfTest-Module-TopOffenders .TopOffenders-ratio {
     font-weight: bold;
     float: left;
@@ -78,3 +78,6 @@
     float: left;
     max-width: 270px;
     overflow: hidden; }
+  #PerfTest .PerfTest-Module-PageSummary svg {
+    display: block;
+    margin: 0 auto; }
