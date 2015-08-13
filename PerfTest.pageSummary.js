@@ -16,6 +16,7 @@
             var totalLoadTime = PerfTest.Data.getPageLoadTime() / 1000;
             var maxLoadTime = 6;
             var percent = Math.min(totalLoadTime/maxLoadTime, 10);
+            console.log(percent);
 
 
             $(params.element).append('<h3>Load time: ' + totalLoadTime + '</h3>');
