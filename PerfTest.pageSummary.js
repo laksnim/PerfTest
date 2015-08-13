@@ -14,7 +14,7 @@
         },
         createDashboardView: function (params) {
             var totalLoadTime = PerfTest.Data.getPageLoadTime() / 1000;
-            var maxLoadTime = 6;
+            var maxLoadTime = 10;
             var percent = Math.min(totalLoadTime/maxLoadTime, 10);
             console.log(percent);
 
@@ -36,7 +36,7 @@
             var arcRadius = height;
             var needleBaseRadius = width/60;
             var arcThickness = width/20;
-            var thetaRad = percToRad(percent);
+            var thetaRad = percToRad(percent/2);
             var cricleRadius = needleBaseRadius * 2;
             var arcRadius = height-cricleRadius;
             var centerX = 0;
