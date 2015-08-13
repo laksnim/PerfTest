@@ -36,7 +36,7 @@
             var arcRadius = height;
             var needleBaseRadius = width/60;
             var arcThickness = width/20;
-            var thetaRad = percToRad(percent/2);
+            var thetaRad = percToRad(percent);
             var cricleRadius = needleBaseRadius * 2;
             var arcRadius = height-cricleRadius;
             var centerX = 0;
