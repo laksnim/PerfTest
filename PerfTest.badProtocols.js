@@ -22,7 +22,7 @@
             $(params.element).append('<h3>' + counts.bad + ' bad protocols</h3>')
 
             var color = d3.scale.ordinal()
-                .range(['#8dca2f','#c50200']);
+                .range(['green','red']);
 
             var canvas = d3.select(params.element)
                 .append("svg")
@@ -34,7 +34,7 @@
 
             var arc = d3.svg.arc()
                 .innerRadius(0)
-                .outerRadius(Math.min(width,height)/3);
+                .outerRadius(Math.min(width,height) * 0.5);
 
             var pie = d3.layout.pie()
                 .value(function(d){return d;});
