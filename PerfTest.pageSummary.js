@@ -10,7 +10,7 @@
         $detailPanel: null,
 
         createDetailView: function (params) {
-            $('<div>page summary detail view</div>').appendTo(params.element);
+            $('<div>page summary detail view hello</div>').appendTo(params.element);
         },
         createDashboardView: function (params) {
             var html = [];
