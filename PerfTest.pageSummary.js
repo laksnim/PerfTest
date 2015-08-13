@@ -62,7 +62,8 @@
                 .attr("width", width)
                 .attr("height", height)
                 .attr("style", "background-color:#eeeeee")
-                .attr('transform','translate(0,'+ -cricleRadius+')');
+                .append("g")
+                .attr('transform','translate(0,'+ -cricleRadius +')');
 
             var arc = d3.svg.arc()
                 .innerRadius(arcRadius - arcThickness)
