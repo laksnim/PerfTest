@@ -13,7 +13,6 @@
             $('<div>page summary detail view </div>').appendTo(params.element);
         },
         createDashboardView: function (params) {
-            console.log(params);
             var html = [];
             var totalLoadTime = PerfTest.Data.getPageLoadTime();
 
