@@ -117,7 +117,7 @@ $baseFont: normal 16px/20px $fontArial;
             li {
                 float: none;
                 clear: both;
-                padding: 5x 0;
+                padding: 5px 0;
             }
             .TopOffenders-ratio {
                 font-weight: bold;
@@ -133,5 +133,12 @@ $baseFont: normal 16px/20px $fontArial;
     }
 
     // ### begin PageSummary style ### //
+    .PerfTest-Module-PageSummary {
+        svg {
+            display: block;
+            margin: 0 auto;
+        }
+    }
+
     // ### begin TopOffenders style ### //
 }
