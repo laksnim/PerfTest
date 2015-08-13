@@ -23,7 +23,7 @@
 
             console.log("slow stuff", topOffenders)
             html.push('<div>');
-            html.push('  <div>Very slow items: ' + topOffenders.length + '</div>');
+            html.push('  <h3>Very slow items: ' + topOffenders.length + '</h3>');
             html.push('  <ul>');
             for (i = 0; i < maxItems; i += 1) {
                 html.push('    <li>');
